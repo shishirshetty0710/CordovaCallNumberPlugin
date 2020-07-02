@@ -1,4 +1,4 @@
-package com.rohithvaranasi.callnumber;
+package com.AaminX.callnumber;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
