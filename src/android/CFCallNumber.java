@@ -23,9 +23,9 @@ public class CFCallNumber extends CordovaPlugin {
   private CallbackContext callbackContext;        // The callback context from which we were invoked.
   private JSONArray executeArgs;
 
-//   protected void getCallPermission(int requestCode) {
-//     cordova.requestPermission(this, requestCode, CALL_PHONE);
-//   }
+  protected void getCallPermission(int requestCode) {
+    cordova.requestPermission(this, requestCode, CALL_PHONE);
+  }
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -33,11 +33,11 @@ public class CFCallNumber extends CordovaPlugin {
     this.executeArgs = args;
 
     if (action.equals("callNumber")) {
-//       if (cordova.hasPermission(CALL_PHONE)) {
-//         callPhone(executeArgs);
-//       } else {
-//         getCallPermission(CALL_REQ_CODE);
-//       }
+      if (cordova.hasPermission(CALL_PHONE)) {
+        callPhone(executeArgs);
+      } else {
+        getCallPermission(CALL_REQ_CODE);
+      }
       callPhone(executeArgs);
     } else if (action.equals("isCallSupported")) {
         this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, isTelephonyEnabled()));
